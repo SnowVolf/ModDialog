@@ -51,8 +51,10 @@ public class ModDialog {
     public static void prepare(Activity ctx) {
         mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(ctx);
         try {
-            showCrackerDialog(ctx);
-            ModDialog.firstStartDone();
+            if (isFirstStart()) {
+                showCrackerDialog(ctx);
+                ModDialog.firstStartDone();
+            }
         } catch (IOException ex) {
             ex.printStackTrace();
             return;
